@@ -8,6 +8,8 @@ void Big_small(int **arr, int n, int m)
     int co = 0;
     for (int i = 0; i < n; ++i)
     {
+        if(co)
+            break;
         int max = arr[i][0];
         for (int j = 0; j < m; ++j)
         {
@@ -26,16 +28,13 @@ void Big_small(int **arr, int n, int m)
         }
         if (count == 1)
         {
-            Big_small = max;
             ++co;
+            std::cout << "The element you want is: " << max;
+            break;
         }
         count = 0;
     }
-    if (co)
-    {
-        std::cout << "The element you want is: " << Big_small;
-    }
-    else
+    if(co == 0)
     {
         std::cout << "There is no element which you want";
     }
