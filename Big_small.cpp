@@ -4,7 +4,7 @@ void Big_small(int **arr, int n, int m)
 {
     int index = 0;
     int count = 0;
-    int co = 0;
+    int end = 0;
     for (int i = 0; i < n; ++i)
     {
         if(co)
@@ -27,13 +27,13 @@ void Big_small(int **arr, int n, int m)
         }
         if (count == 1)
         {
-            ++co;
+            ++end;
             std::cout << "The element you want is: " << Big_Small;
             break;
         }
         count = 0;
     }
-    if(co == 0)
+    if(end == 0)
     {
         std::cout << "There is no element which you want";
     }
