@@ -5,9 +5,10 @@ void Big_small(int **arr, int n, int m)
     int index = 0;
     int count = 0;
     int end = 0;
+    int co = 0;
     for (int i = 0; i < n; ++i)
     {
-        if(co)
+        if(end)
             break;
         int Big_Small = arr[i][0];
         for (int j = 0; j < m; ++j)
@@ -16,8 +17,28 @@ void Big_small(int **arr, int n, int m)
             {
                 Big_Small = arr[i][j];
                 index = j;
+                for(int k = index; k < m; ++j)
+                {
+                    if(arr[i][index] == arr[i][j])
+                    {
+                        ++co;
+                    }
+                    if(co)
+                    {
+                        break;
+                    }
+                }
+            }
+            if(co)
+            {
+                break;
             }
         }
+        if(co)
+            {
+                co = 0;
+                continue;
+            }
         for (int i = 0; i < n; ++i)
         {
             if (arr[i][index] <= Big_Small)
