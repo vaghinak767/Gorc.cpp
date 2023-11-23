@@ -5,9 +5,9 @@ void Big_small(int **arr, int n, int m)
     int index = 0;
     int count = 0;
     int end = 0;
-    int co = 0;
     for (int i = 0; i < n; ++i)
     {
+        int co = 0;
         if(end)
             break;
         int Big_Small = arr[i][0];
@@ -17,9 +17,10 @@ void Big_small(int **arr, int n, int m)
             {
                 Big_Small = arr[i][j];
                 index = j;
-                for(int k = index; k < m; ++j)
+            }
+                for(int k = index + 1; k < m; ++k)
                 {
-                    if(arr[i][index] == arr[i][j])
+                    if(Big_Small == arr[i][k])
                     {
                         ++co;
                     }
@@ -28,7 +29,7 @@ void Big_small(int **arr, int n, int m)
                         break;
                     }
                 }
-            }
+            
             if(co)
             {
                 break;
@@ -36,7 +37,6 @@ void Big_small(int **arr, int n, int m)
         }
         if(co)
             {
-                co = 0;
                 continue;
             }
         for (int i = 0; i < n; ++i)
@@ -49,7 +49,7 @@ void Big_small(int **arr, int n, int m)
         if (count == 1)
         {
             ++end;
-            std::cout << "The element you want is: " << Big_Small;
+            std::cout << "The element you want is: " << "arr[" << i <<"][" << index << "] = "<<  Big_Small;
             break;
         }
         count = 0;
