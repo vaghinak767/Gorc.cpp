@@ -11,7 +11,12 @@ void rek( int **arr, int n, int m, int size, int size1)
         {
             if(arr[n][m - 1] == 1)
             {
-                arr[n][m] = 0;
+                int  h = m - 1;
+                while(arr[n][h]){
+                   arr[n][h] = 0;
+                   if(h == 0)
+                       break;
+                   --h;}
                 rek(arr, n , m - 1, size, size1);
                 return;
             }
@@ -30,10 +35,15 @@ void rek( int **arr, int n, int m, int size, int size1)
     if(m == 0)
     {
         if(arr[n][m] == 1)
-        {
+        {   
             if(arr[n - 1][m] == 1)
             {
-                arr[n][m] = 0;
+                int c = n - 1;
+                while(arr[c][m]){
+                   arr[c][m] = 0;
+                   if(c == 0)
+                       break;
+                   --c;
                 rek(arr, n - 1, m, size, size1);
                 return;
             }
