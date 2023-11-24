@@ -14,7 +14,7 @@ int main()
     while (j < n)
     {
         std::cin >> arr[i][j];
-        if (i == (n - 1) && j - 1)
+        if (i == (n - 1) && j != 0)
         {
             ++j;
             --co;
