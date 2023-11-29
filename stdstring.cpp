@@ -1,11 +1,30 @@
 #include <iostream>
 
+size_t strlen(const char* ptr);
+char* strchr(const char* ptr, const char c);
+int strcmp(const char* s1, const char* s2);
+char * strcpy(char *s1, const char *s2);
+
+int main()
+{
+    int size1 = 0, size2 = 0;
+    std::cin >> size1 >> size2;
+    char *s1 = new char[size1];
+    char *s2 = new char[size2];
+    std::cin >> s1;
+    std::cin >> s2;
+    std::cout << strcmp(s1, s2) << std::endl;
+    std::cout << strlen(s1) << std::endl;
+    std::cout << strcmp(s1, s2) << std::endl;
+    delete[] s1;
+    delete[] s2;
+}
+
 size_t strlen(const char* ptr)
 {
     int size = 0;
-    while(*ptr)
+    while(ptr[size])
     {
-        ++ptr;
         ++size;
     }
     return size;
@@ -13,18 +32,15 @@ size_t strlen(const char* ptr)
 
 char* strchr(const char* ptr, const char c)
 {
-    while(*ptr)
+    while(*ptr && *ptr != c)
     {
-        if(*ptr == c)
-        {
-            return (char*)ptr; 
-        }
         ++ptr;
     }
     return (char*)ptr; 
 }
 
-int strcmp(const char* s1, const char* s2){
+int strcmp(const char* s1, const char* s2)
+{
     int i = 0;
     int j = 0;
     while(s1[i])
@@ -61,21 +77,15 @@ int strcmp(const char* s1, const char* s2){
     return 0;
 }
 
-int main()
+char * strcpy(char *s1, const char *s2)
 {
-    int size1 = 0, size2 = 0;
-    std::cin >> size1 >> size2;
-    char *s1 = new char[size1];
-    char *s2 = new char[size2];
-    std::cin >> s1;
-    std::cin >> s2;
-    std::cout << strcmp(s1, s2) << std::endl;
-    delete[] s1;
-    delete[] s2;
+    char * it = s1;
+    while(*s2)
+    {
+        *it = *s2;
+        ++it;
+        ++s2;
+    }
+    *it = '\0';
+    return s1;
 }
-
-
-
-
-
-
