@@ -1,9 +1,9 @@
 #include <iostream>
 
 size_t strlen(const char* ptr);
-char* strchr(const char* ptr, const char c);
+char *strchr(const char* ptr, const char c);
 int strcmp(const char* s1, const char* s2);
-char * strcpy(char *s1, const char *s2);
+char *strcpy(char *s1, const char *s2);
 
 int main()
 {
@@ -15,7 +15,8 @@ int main()
     std::cin >> s2;
     std::cout << strcmp(s1, s2) << std::endl;
     std::cout << strlen(s1) << std::endl;
-    std::cout << strcmp(s1, s2) << std::endl;
+    std::cout << strchr(s1, 'k') << std::endl;
+    std::cout << strcpy(s1, s2) << std::endl;
     delete[] s1;
     delete[] s2;
 }
