@@ -5,6 +5,7 @@ char *strchr(const char* ptr, const char c);
 int strcmp(const char* s1, const char* s2);
 char *strcpy(char *s1, const char *s2);
 char *strstr(const char *, const char *);
+char **strsplit(char *arr, char delim);
 
 int main()
 {
@@ -13,7 +14,6 @@ int main()
     char *target = new char[size2];
     int index = 0;
     char ch;
-    std::cin >> ch;
     while (std::cin.get(ch) && ch != '\n') {
         
         if (index == size1 - 1) {
@@ -44,12 +44,6 @@ int main()
         target[index] = c;
         ++index1;
     }
-    char *ptr = strstr(arr, target);
-    std::cout << strcmp(arr, target) << std::endl;
-    std::cout << strlen(arr) << std::endl;
-    std::cout << strchr(arr, 'k') << std::endl;
-    std::cout << strcpy(arr, target) << std::endl;
-    std::cout << (void*)ptr << std::endl;
     delete[]arr;
     delete[]target;
 }
@@ -152,4 +146,49 @@ char *strstr(const char *arr, const char *target)
         }
     }
     return nullptr;
+}
+
+char **strsplit(char *arr, char delim)
+{
+    int count = 0, tmp = 0;
+    int i = 0;
+    int row  = 0;
+    while(arr[i] != '\0')
+    {
+        while(arr[i] != delim && arr[i] != '\0')
+        {
+            ++count;
+            ++i;
+        }
+        ++row;
+        if(tmp < count)
+        {
+            tmp = count;
+        }
+        count = 0;
+        ++i;
+    }
+    char **end = new char*[row + 1];
+    for(int j = 0; j < row; ++j)
+    {
+        end[j] = new char[count + 1];
+    }
+    i = 0;
+    int k = 0;
+    int c = 0;
+    while(arr[i] != '\0')
+    {
+        while(arr[i] != delim && arr[i] != '\0')
+        {
+            end[k][c] = arr[i];
+            ++c;
+            ++i;
+        }
+        end[k][c + 1] = '\0';
+        c = 0;
+        ++k;
+        ++i;
+    }
+    end[k] = nullptr;
+    return end;
 }
