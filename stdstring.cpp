@@ -148,7 +148,7 @@ char *strstr(const char *arr, const char *target)
     return nullptr;
 }
 
-char **strsplit(char *arr, char delim)
+char **strsplit(const char *arr, char delim)
 {
     int count = 0, tmp = 0;
     int i = 0;
@@ -171,7 +171,7 @@ char **strsplit(char *arr, char delim)
     char **end = new char*[row + 1];
     for(int j = 0; j < row; ++j)
     {
-        end[j] = new char[count + 1];
+        end[j] = new char[tmp + 1];
     }
     i = 0;
     int k = 0;
