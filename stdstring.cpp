@@ -166,7 +166,10 @@ char **strsplit(const char *arr, char delim)
             tmp = count;
         }
         count = 0;
-        ++i;
+        while(arr[i] == delim)
+        {
+            ++i;
+        }
     }
     char **end = new char*[row + 1];
     for(int j = 0; j < row; ++j)
@@ -187,7 +190,10 @@ char **strsplit(const char *arr, char delim)
         end[k][c + 1] = '\0';
         c = 0;
         ++k;
-        ++i;
+        while(arr[i] == delim)
+        {
+            ++i;
+        }
     }
     end[k] = nullptr;
     return end;
