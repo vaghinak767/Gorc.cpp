@@ -2,12 +2,12 @@
 
 int amenamec_2(int n)
 {
-	if((n & (n - 1)) == 0)
+	if ((n & (n - 1)) == 0)
 	{
 		return n;
 	}
 	int a = 1;
-	while(n > a)
+	while (n > a)
 	{
 		a = a << 1;
 	}
