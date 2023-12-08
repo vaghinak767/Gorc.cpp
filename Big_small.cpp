@@ -2,73 +2,52 @@
 
 void Big_small(int **arr, int n, int m)
 {
+    int mid = 0;
+    int target = arr[0][0];
     int index = 0;
-    int count = 0;
-    int end = 0;
     for (int i = 0; i < n; ++i)
     {
-        int co = 0;
-        if(end)
-            break;
-        int Big_Small = arr[i][0];
         for (int j = 0; j < m; ++j)
         {
-            if (arr[i][j] > Big_Small)
+            if (arr[i][j] > target)
             {
-                Big_Small = arr[i][j];
+                target = arr[i][j];
                 index = j;
             }
-                for(int k = index + 1; k < m; ++k)
-                {
-                    if(Big_Small == arr[i][k])
-                    {
-                        ++co;
-                    }
-                    if(co)
-                    {
-                        break;
-                    }
-                }
-            
-            if(co)
+        }
+        for (int k = 0; k < n; ++k)
+        {
+            if (arr[k][index] < target)
             {
                 break;
             }
-        }
-        if(co)
+            ++mid;
+            if (mid == n)
             {
-                continue;
-            }
-        for (int i = 0; i < n; ++i)
-        {
-            if (arr[i][index] <= Big_Small)
-            {
-                ++count;
+                std::cout << "The elemnt you want is arr[" << i << "][" << index << "] = " << arr[i][index] << std::endl;
+                return;
             }
         }
-        if (count == 1)
-        {
-            ++end;
-            std::cout << "The element you want is: " << "arr[" << i <<"][" << index << "] = "<<  Big_Small;
+        if(i == n - 1)
             break;
-        }
-        count = 0;
+        target = arr[i + 1][0];
     }
-    if(end == 0)
-    {
-        std::cout << "There is no element which you want";
-    }
+    std::cout << "There is no element which you want" << std::endl;
 }
 
 int main()
 {
     int n = 0, m = 0;
-    std::cin >> n >> m;
+    std::cout << "Enter the size of rows: ";
+    std::cin >> n;
+    std::cout << "Enter the size of columns: ";
+    std::cin >> m;
     int **arr = new int *[n];
     for (int i = 0; i < n; ++i)
     {
         arr[i] = new int[m];
     }
+    std::cout << "Enter the elements of matrix" << std::endl;
     for (int i = 0; i < n; ++i)
     {
         for (int j = 0; j < m; ++j)
@@ -77,7 +56,6 @@ int main()
         }
     }
     Big_small(arr, n, m);
-    std::cout << std::endl;
     for (int i = 0; i < n; ++i)
     {
         delete[] arr[i];
