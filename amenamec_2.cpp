@@ -11,8 +11,7 @@ int amenamec_2(int n)
 	{
 		a = a << 1;
 	}
-	a = a >> 1;
-	return a;
+	return a >> 1;
 }
 
 int main()
