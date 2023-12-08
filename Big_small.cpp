@@ -1,39 +1,7 @@
 #include <iostream>
 
-void Big_small(int **arr, int n, int m)
-{
-    int mid = 0;
-    int target = arr[0][0];
-    int index = 0;
-    for (int i = 0; i < n; ++i)
-    {
-        for (int j = 0; j < m; ++j)
-        {
-            if (arr[i][j] > target)
-            {
-                target = arr[i][j];
-                index = j;
-            }
-        }
-        for (int k = 0; k < n; ++k)
-        {
-            if (arr[k][index] < target)
-            {
-                break;
-            }
-            ++mid;
-            if (mid == n)
-            {
-                std::cout << "The elemnt you want is arr[" << i << "][" << index << "] = " << arr[i][index] << std::endl;
-                return;
-            }
-        }
-        if(i == n - 1)
-            break;
-        target = arr[i + 1][0];
-    }
-    std::cout << "There is no element which you want" << std::endl;
-}
+int the_biggest(int **arr, int i, int m);
+void Big_small(int **arr, int n, int m);
 
 int main()
 {
@@ -61,4 +29,42 @@ int main()
         delete[] arr[i];
     }
     delete[] arr;
+}
+
+void Big_small(int **arr, int n, int m)
+{
+    int mid = 0;
+    for (int i = 0; i < n; ++i)
+    {
+        int index = the_biggest(arr, i, m);
+        for (int k = 0; k < n; ++k)
+        {
+            if (arr[k][index] < arr[i][index])
+            {
+                break;
+            }
+            ++mid;
+            if (mid == n)
+            {
+                std::cout << "The elemnt you want is arr[" << i << "][" << index << "] = " << arr[i][index] << std::endl;
+                return;
+            }
+        }
+    }
+    std::cout << "There is no element which you want" << std::endl;
+}
+
+int the_biggest(int **arr, int i, int m)
+{
+    int target = arr[i][0];
+    int index = 0;
+    for (int j = 0; j < m; ++j)
+    {
+        if (arr[i][j] > target)
+        {
+            target = arr[i][j];
+            index = j;
+        }
+    }
+    return index;
 }
