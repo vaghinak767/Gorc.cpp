@@ -12,7 +12,7 @@ int main()
 
 bool stg(int i, int n)
 {
-    for(int j = 2; j <= i; ++j)
+    for(int j = 2; j < i; ++j)
     {
         if(i % j == 0 && n % j == 0)
         return false;
