@@ -73,11 +73,15 @@ int sum_of_bit(int n, int m)
     bool carry = 0;
     for(int i = 0; i < (sizeof(int) * 8); ++i)
     {
-        sum += (((((n >> i) & 1) ^ ((m >> i) & 1)) ^ carry) << i);
+        sum ^= (((((n >> i) & 1) ^ ((m >> i) & 1)) ^ carry) << i);
         if(carry == 1 && ((n >> i) & 1) | ((m >> i) & 1))
-        carry |= ((n >> i) & 1) & ((m >> i) & 1);
+        {
+            carry |= ((n >> i) & 1) & ((m >> i) & 1);
+        }
     else
-        carry = ((n >> i) & 1) & ((m >> i) & 1);
+        {
+            carry = ((n >> i) & 1) & ((m >> i) & 1);
+        }
     }
     return sum;
 }
