@@ -11,6 +11,29 @@ void reset(int &n, int i)
     else
         return;
 }
+
+void selection(int *arr, int n)
+{
+  int ind = 0;
+  for(int i = 0; i < n ; ++i)
+  {
+    ind = i;
+    for(int j = i + 1; j < n; ++j)
+    {
+      if(arr[j] < arr[ind])
+      {
+        ind = j;
+      }
+    }
+    if(ind != i)
+    {
+      int tmp = arr[ind];
+      arr[ind] = arr[i];
+      arr[i] = tmp;
+    }
+  }
+}
+
 void insertion(int *arr, int n)
 {
     for (int i = 1; i < n; ++i)
@@ -26,7 +49,7 @@ void insertion(int *arr, int n)
     }
 }
 
-void buble(int *arr, int n)
+void bubble(int *arr, int n)
 {
     for (int i = 0; i < n - 1; ++i)
     {
@@ -41,6 +64,8 @@ void buble(int *arr, int n)
                 flag = false;
             }
         }
+        if(flag)
+            break;
     }
 }
 
@@ -54,7 +79,7 @@ int main()
         std::cin >> arr[i];
     }
     int key = 0;
-    while (key < 1 || key > 2)
+    while (key < 1 || key > 3)
     {
         std::cin >> key;
     }
@@ -62,6 +87,8 @@ int main()
         insertion(arr, n);
     if (key == 2)
         buble(arr, n);
+    if (key == 3)
+        selection(arr, n);
     for (int i = 0; i < n; ++i)
     {
         std::cout << arr[i] << " ";
