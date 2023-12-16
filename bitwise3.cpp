@@ -86,7 +86,7 @@ int main()
     if (key == 1)
         insertion(arr, n);
     if (key == 2)
-        buble(arr, n);
+        bubble(arr, n);
     if (key == 3)
         selection(arr, n);
     for (int i = 0; i < n; ++i)
